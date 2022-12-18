@@ -8,7 +8,7 @@
         instance_type: t2.micro
         image: ami-0b0dcb5067f052a63
         region : us-east-1
-        key_name: test_devops
+        key_name: ansible_key
         vpc_subnet_id: subnet-09caeb001f259efee
         group: eshop
         count: 1
@@ -59,7 +59,7 @@
         repo: "https://github.com/SalavecJ/4it572_ansible.git"
         dest: ./app
     - name: Build docker image
-      shell: cd app && docker build -t myeshop:latest
+      shell: cd app && docker build -t myeshop:latest .
       become: yes
     - name: Run eshop
       shell: docker run -p 80:3000 myeshop
